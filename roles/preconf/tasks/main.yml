@@ -1,0 +1,16 @@
+- name: Install system soft
+  apt: name={{ item }} update_cache=yes
+  with_items:
+    - zsh
+    - htop
+    - sudo
+    - iftop
+    - tcpdump
+    - wget
+    - curl
+    - git
+    - vim
+    - tmux
+    - facter
+
+- include: usermanagement.yml

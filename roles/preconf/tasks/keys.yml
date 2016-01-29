@@ -1,0 +1,4 @@
+- name: Set up authorized_keys for the superusers
+  authorized_key: user={{ item.user }} key="{{ item.key }}"
+  with_items:
+    - "{{ ssh_admins }}"

@@ -1,0 +1,14 @@
+- name: Add wst group
+  group: name=wst state=present
+
+- name: Add admins
+  user: name={{ item.user }} shell={{ item.shell }} groups="sudo,wst" password={{ item.password }}
+  with_items:
+    - "{{ ssh_admins }}"
+
+- name: Remove preinstalled users
+  user: name={{ item.user }} state=absent remove=yes
+  with_items:
+    - "{{ absent_users }}"
+
+- include: keys.yml

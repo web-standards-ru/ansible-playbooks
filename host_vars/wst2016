@@ -1,0 +1,11 @@
+default_password: $6$rounds=656000$wB45ZKSkZFSlxkeM$4MkuZ1dsL2/aNNYDZSWq4ZlYfXeo287BM/55gJ2o6.QNUPrzhQMM9ajxFxk2Jx7i962M6gSCTAUAEm/t.ta/P/
+
+ssh_admins:
+  - { user: 'h4', password: "{{ default_password }}", shell: '/bin/zsh', key: "{{ lookup('file', 'public_keys/h4.pub') }}" }
+  - { user: 'pepelsbey', password: "{{ default_password }}", key: "{{ lookup('file', 'public_keys/pepelsbey.pub') }}" }
+  - { user: 'miripiruni', password: "{{ default_password }}", key: "{{ lookup('file', 'public_keys/miripiruni.pub') }}" }
+  - { user: 'jahson', password: "{{ default_password }}", key: "{{ lookup('file', 'public_keys/jahson.pub') }}" }
+  - { user: 'thebits', password: "{{ default_password }}", key: "{{ lookup('file', 'public_keys/thebits.pub') }}" }
+
+absent_users:
+  - {user: 'user'}

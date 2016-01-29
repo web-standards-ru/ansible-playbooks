@@ -1,0 +1,2 @@
+[webservers]
+wst2016  ansible_connection=ssh  ansible_host=62.76.186.5
