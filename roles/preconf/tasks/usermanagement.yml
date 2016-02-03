@@ -2,7 +2,7 @@
   group: name=wst state=present
 
 - name: Add admins
-  user: name={{ item.user }} shell={{ item.shell }} groups="sudo,wst" password={{ item.password }}
+  user: name={{ item.user }} groups="sudo,wst"
   with_items:
     - "{{ ssh_admins }}"
 
@@ -10,5 +10,8 @@
   user: name={{ item.user }} state=absent remove=yes
   with_items:
     - "{{ absent_users }}"
+
+- name: configure sudoers
+  lineinfile: "dest=/etc/sudoers backup=yes state=present regexp='^%sudo' line='%sudo ALL=(ALL) NOPASSWD:ALL'"
 
 - include: keys.yml
